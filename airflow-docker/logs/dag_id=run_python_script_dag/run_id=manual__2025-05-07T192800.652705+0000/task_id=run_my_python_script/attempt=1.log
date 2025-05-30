@@ -1,0 +1,25 @@
+[2025-05-07T19:28:02.628+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: run_python_script_dag.run_my_python_script manual__2025-05-07T19:28:00.652705+00:00 [queued]>
+[2025-05-07T19:28:02.637+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: run_python_script_dag.run_my_python_script manual__2025-05-07T19:28:00.652705+00:00 [queued]>
+[2025-05-07T19:28:02.638+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-05-07T19:28:02.653+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): run_my_python_script> on 2025-05-07 19:28:00.652705+00:00
+[2025-05-07T19:28:02.659+0000] {standard_task_runner.py:60} INFO - Started process 194 to run task
+[2025-05-07T19:28:02.707+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'run_python_script_dag', 'run_my_python_script', 'manual__2025-05-07T19:28:00.652705+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/run_python_script_dag.py', '--cfg-path', '/tmp/tmploc5d4_p']
+[2025-05-07T19:28:02.726+0000] {standard_task_runner.py:88} INFO - Job 13: Subtask run_my_python_script
+[2025-05-07T19:28:02.942+0000] {task_command.py:423} INFO - Running <TaskInstance: run_python_script_dag.run_my_python_script manual__2025-05-07T19:28:00.652705+00:00 [running]> on host 9a330f7bf05e
+[2025-05-07T19:28:03.025+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='run_python_script_dag' AIRFLOW_CTX_TASK_ID='run_my_python_script' AIRFLOW_CTX_EXECUTION_DATE='2025-05-07T19:28:00.652705+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-05-07T19:28:00.652705+00:00'
+[2025-05-07T19:28:03.027+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-05-07T19:28:03.029+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/scripts/my_script.py']
+[2025-05-07T19:28:03.040+0000] {subprocess.py:86} INFO - Output:
+[2025-05-07T19:28:03.062+0000] {subprocess.py:93} INFO - python: can't open file '/opt/***/scripts/my_script.py': [Errno 2] No such file or directory
+[2025-05-07T19:28:03.065+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2025-05-07T19:28:03.095+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2025-05-07T19:28:03.099+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=run_python_script_dag, task_id=run_my_python_script, execution_date=20250507T192800, start_date=20250507T192802, end_date=20250507T192803
+[2025-05-07T19:28:03.117+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 13 for task run_my_python_script (Bash command failed. The command returned a non-zero exit code 2.; 194)
+[2025-05-07T19:28:03.199+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-05-07T19:28:03.255+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
